@@ -20,4 +20,19 @@ const recursiveFactorial = (n) => {
     return n * recursiveFactorial(n-1);
 }
 
-console.log(recursiveFactorial(5))
+// console.log(recursiveFactorial(5))
+
+const collectOddValues = (arr) => {
+    let result = [];
+
+    function recursiveHelper (input) {
+        if (input.length === 0) return;
+        if(input[0] % 2 !== 0) result.push(input[0])
+        recursiveHelper(input.slice(1))
+    }
+
+    recursiveHelper(arr)
+    return result;
+}
+
+// console.log(collectOddValues([1,2,3,4,5,6,7,8,9]));
