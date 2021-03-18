@@ -22,17 +22,27 @@ const recursiveFactorial = (n) => {
 
 // console.log(recursiveFactorial(5))
 
+// const collectOddValues = (arr) => {
+//     let result = [];
+
+//     function recursiveHelper (input) {
+//         if (input.length === 0) return;
+//         if(input[0] % 2 !== 0) result.push(input[0])
+//         recursiveHelper(input.slice(1))
+//     }
+
+//     recursiveHelper(arr);
+//     return result;
+// }
 const collectOddValues = (arr) => {
     let result = [];
-
-    function recursiveHelper (input) {
-        if (input.length === 0) return;
-        if(input[0] % 2 !== 0) result.push(input[0])
-        recursiveHelper(input.slice(1))
-    }
-
-    recursiveHelper(arr)
+    if (arr.length === 0) return result;
+    
+    if(arr[0] % 2 !== 0) result.push(arr[0]);
+    result = result.concat(collectOddValues(arr.slice(1)));
     return result;
 }
 
-// console.log(collectOddValues([1,2,3,4,5,6,7,8,9]));
+
+
+console.log(collectOddValues([1,2,3,4,5,6,7,8,9]));
