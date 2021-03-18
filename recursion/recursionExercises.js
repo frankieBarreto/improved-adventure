@@ -67,3 +67,45 @@ const isPalindrome = (str) => {
 // console.log(isPalindrome('tacocat')); // true
 // console.log(isPalindrome('amanaplanacanalpanama')); // true
 // console.log(isPalindrome('amanaplanacanalpandemonium')); // false
+
+
+// SAMPLE INPUT / OUTPUT
+// const isOdd = val => val % 2 !== 0;
+
+// someRecursive([1,2,3,4], isOdd) // true
+// someRecursive([4,6,8,9], isOdd) // true
+// someRecursive([4,6,8], isOdd) // false
+// someRecursive([4,6,8], val => val > 10); // false
+const isOdd = (n) => {
+    return n % 2 !== 0
+}
+
+const someRecursive = (arr, cb) => {
+    if(arr.length === 1) return cb(arr[0]);
+    if(cb(arr[0])) return true
+    return someRecursive(arr.slice(1), cb);
+}
+
+// console.log(someRecursive([1,2,3,4], isOdd)) // true
+// console.log(someRecursive([4,6,8,9], isOdd)) // true
+// console.log(someRecursive([4,6,8], isOdd))// false
+// console.log(someRecursive([4,6,8], val => val > 10)); // false
+
+
+const flatten = (arr) => {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        if(Array.isArray(arr[i])) {
+            result = result.concat(flatten(arr[i]))
+        } else {
+            result.push(arr[i])
+        }
+    }
+
+    return result
+  }
+  
+//   console.log(flatten([1, 2, 3, [4, 5] ])) // [1, 2, 3, 4, 5]
+//   console.log(flatten([1, [2, [3, 4], [[5]]]])) // [1, 2, 3, 4, 5]
+//   console.log(flatten([[1],[2],[3]])) // [1,2,3]
+//   console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])) // [1,2,3
