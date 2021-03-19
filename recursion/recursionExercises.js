@@ -199,4 +199,38 @@ let obj3 = {
         }
     }
 }
-console.log(stringifyNumbers(obj3));
+// console.log(stringifyNumbers(obj3));
+
+
+
+const collectStrings = (obj) => {
+    let stringCollection = [];
+    for (let key in obj) {
+        let value = obj[key];
+        if(typeof value === 'string') {
+           stringCollection.push(value);
+        } else if(typeof value === 'object') {
+           stringCollection = stringCollection.concat(collectStrings(obj[key]))
+        }
+    }
+
+    return stringCollection;
+}
+
+const obj4 = {
+    stuff: "foo",
+    data: {
+        val: {
+            thing: {
+                info: "bar",
+                moreInfo: {
+                    evenMoreInfo: {
+                        weMadeIt: "baz"
+                    }
+                }
+            }
+        }
+    }
+}
+
+console.log(collectStrings(obj4)) // ["foo", "bar", "baz"]);
