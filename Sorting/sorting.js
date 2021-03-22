@@ -1,5 +1,5 @@
 // BUBBLE SORT
-
+// Big O Quadratic
 const bubbleSort = (arr) => {
     let sorted = false;
     while(!sorted) {
@@ -16,7 +16,7 @@ const bubbleSort = (arr) => {
     return arr;
 }
 
-// O(N)*2
+// O(N)*2 Quadratic
 const selectionSort = (arr) => {
     for (let i = 0; i < arr.length; i++) {
         let min = i;
