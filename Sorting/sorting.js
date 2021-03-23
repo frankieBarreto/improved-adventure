@@ -60,7 +60,7 @@ let arr2 = [0,1,2,3,4,5,-1,-2,-3,-4,-5,];
 
 ////////////////////////////////////////////////////// Intermediate //////////////////////////////////////////////
 
-let data = new Array(100).fill(0)
+let data = new Array(100000).fill(0)
 .map((el) =>(
     el = Math.floor(Math.random() * Math.floor(100)))
     );
@@ -141,13 +141,47 @@ const quickSort = (arr, left = 0, right = arr.length-1) => {
     return arr;
 }
 
+
+const getDigit = (num, i) => {
+    return Math.floor(Math.abs(num) / Math.pow(10, i) % 10)
+}
+
+const digitCount = (num) => {
+    if(num === 0) return 1;
+    return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
+
+const mostDigits = (arr) => {
+    let max = 0;
+    for (let n of arr) {
+        max = Math.max(max,  digitCount(n))
+    }
+    return max;
+}
+
+
+const radixSort = (arr) => {
+    let maxCount = mostDigits(arr);
+    for (let k = 0; k < maxCount; k++) {
+        let digitBuckets = Array.from({length: 10}, () => [])
+        for(let i = 0; i < arr.length; i++) {
+            let digit = getDigit(arr[i], k);
+            digitBuckets[digit].push(arr[i])
+        }
+        arr = [].concat(...digitBuckets);
+    }
+
+    return arr;
+}
+
 // console.log(bubbleSort(data));
 // console.log(selectionSort(data));
 // console.log(insertionSort(data));
 // console.log(merge([1, 10, 50], [2, 14, 99, 100]));
 // console.log(mergeSort(data));
-console.log(pivot(data))
-console.log(quickSort(data));
+// console.log(pivot(data))
+// console.log(quickSort(data));
+// console.log(radixSort(data));
 
 
 
