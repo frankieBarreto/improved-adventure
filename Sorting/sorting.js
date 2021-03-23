@@ -54,13 +54,13 @@ const insertionSort = (arr) => {
 
 
 // let arr1 = [21,2,5,4,7,8,10,-1,-4];
-// let arr2 = [0,1,2,3,4,5,-1,-2,-3,-4,-5,];
+let arr2 = [0,1,2,3,4,5,-1,-2,-3,-4,-5,];
 
 
 
 ////////////////////////////////////////////////////// Intermediate //////////////////////////////////////////////
 
-let data = new Array(100000).fill(0)
+let data = new Array(100).fill(0)
 .map((el) =>(
     el = Math.floor(Math.random() * Math.floor(100)))
     );
@@ -98,21 +98,56 @@ const merge = (arr1, arr2) => {
     return result;
 }
 
-// console.log(merge([1, 10, 50], [2, 14, 99, 100]))
 
 
 const mergeSort = (arr) => {
     if(arr.length <= 1) return arr;
     let mid = Math.floor(arr.length / 2);
-    let arr1 = mergeSort(arr.slice(0, mid));
-    let arr2 = mergeSort(arr.slice(mid))
-    return merge(arr1, arr2) 
+    let left = mergeSort(arr.slice(0, mid));
+    let right = mergeSort(arr.slice(mid));
+    return merge(left, right);
 }
-    // console.log(bubbleSort(data));
-    // console.log(selectionSort(data));
-    // console.log(insertionSort(data));
 
-    console.log(mergeSort(data))
+
+
+
+
+const pivot = (arr, start = 0, end = arr.length -1) => {
+    const swap = (arr, i, j) => {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+
+    let pivot = arr[start];
+    let swapIdx = start;
+
+    // let idx = arr.indexOf(point);
+    for (let i = start + 1; i <= end; i++) {
+        if(pivot > arr[i]) {
+            swapIdx++;
+            swap(arr, swapIdx, i);
+        }
+    }
+    swap(arr, start, swapIdx);
+    return swapIdx;
+}
+
+const quickSort = (arr, left = 0, right = arr.length-1) => {
+    if(left < right) {
+        let pivotIndex = pivot(arr, left, right);
+        quickSort(arr, left, pivotIndex-1);
+        quickSort(arr, pivotIndex+1, right);
+    }
+    
+    return arr;
+}
+
+// console.log(bubbleSort(data));
+// console.log(selectionSort(data));
+// console.log(insertionSort(data));
+// console.log(merge([1, 10, 50], [2, 14, 99, 100]));
+// console.log(mergeSort(data));
+console.log(pivot(data))
+console.log(quickSort(data));
 
 
 
