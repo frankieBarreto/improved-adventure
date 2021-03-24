@@ -108,6 +108,21 @@ class LinkedList {
 
         return false;
     }
+
+    remove(index) {
+        if(index < 0 || index > this.length) return false;
+        if(index === 0) !!this.shift();
+        if(index === this.length) !!this.pop();
+
+        let found = this.get(index-1);
+        if(found) {
+            let removed = found.next;
+            found.next = removed.next;
+            this.length--;
+            return removed;
+        }
+
+    }
 }
 
 let links = new LinkedList();
@@ -115,10 +130,11 @@ let links = new LinkedList();
 links.push('node1')
 links.push('node2');
 links.push('node3');
-links.push('!');
-links.shift();
-links.unshift('node4');
-links.get(0)
-links.set(0, 'node1');
-links.insert(1, 'betwix')
+// links.push('!');
+// links.shift();
+// links.unshift('node0');
+// links.get(0)
+// links.set(0, 'node1');
+links.insert(2, '!!!!!');
+links.remove(1)
 console.log(links);
