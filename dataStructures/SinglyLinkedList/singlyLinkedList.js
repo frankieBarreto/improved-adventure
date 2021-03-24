@@ -67,16 +67,58 @@ class LinkedList {
         }
         return this;
     }
+
+    get(index) {
+        if(index < 0 || index > this.length) return null;
+        let i = 0, node = this.head;
+        while(i < index) {
+            node = node.next;
+            i++;
+        }
+
+        return node;
+    }
+    
+    set(index, val) {
+        let node = new Node(val);
+        let found = this.get(index);
+        if(found) {
+            found.val = val;
+            return true;
+        }
+
+        return false;
+    }
+
+    insert(index, val) {
+        if(index < 0 || index > this.length) return false;
+        if(index === 0) !!this.unshift(val);
+        if(index === this.length) !!this.push(val);
+        
+        let node = new Node(val);
+        let foundPrev = this.get(index-1);
+        let temp = foundPrev.next;
+
+        if(foundPrev) {
+            foundPrev.next = node;
+            node.next = temp
+            this.length++;
+            return true;
+        }
+
+        return false;
+    }
 }
 
 let links = new LinkedList();
 
-links.push('hello')
-links.push('yo');
-links.push('yeerrrrrrr');
+links.push('node1')
+links.push('node2');
+links.push('node3');
 links.push('!');
-console.log(links)
 links.shift();
-console.log(links)
-links.unshift(1);
-console.log(links)
+links.unshift('node4');
+links.get(0)
+links.set(0, 'node1');
+links.insert(1, 'betwix')
+console.log(links);
