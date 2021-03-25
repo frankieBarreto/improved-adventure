@@ -125,20 +125,15 @@ class DoublyLinkedList {
   reverse() {
     let node = this.head;
     this.head = this.tail;
-    this.head.prev = null;
     this.tail = node;
     
     let next, prev = null;
     for (let i = 0; i < this.length; i++) {
-      if(i === this.length-1) {
-        node.prev = node.prev;
-        node.next = null;
-      } else {
-        next = node.next;
-        node.next = prev;
-        prev = node;
-        node = next;
-      }
+    
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
     }
     
     return this;
