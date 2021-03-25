@@ -116,7 +116,7 @@ class LinkedList {
     remove(index) {
         if(index < 0 || index > this.length) return false;
         if(index === 0) !!this.shift();
-        if(index === this.length) !!this.pop();
+        if(index === this.length-1) !!this.pop();
 
         let found = this.get(index-1);
         if(found) {

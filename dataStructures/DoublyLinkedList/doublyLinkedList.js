@@ -112,8 +112,18 @@ class DoublyLinkedList {
         return false;
     }
 
-    remove() {
+    remove(idx) {
+        if(idx < 0 || idx > this.length) return false;
+        if(idx === 0) !!this.shift();
+        if(idx === this.length-1) !!this.pop();
 
+        let found = this.get((idx - 1));
+        if(found) {
+            let removed = found.next;
+            found.next = removed.next;
+            this.length--;
+            return removed;
+        }
     }
 }
 
