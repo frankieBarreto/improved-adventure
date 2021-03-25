@@ -66,24 +66,21 @@ class DoublyLinkedList {
   get(idx) {
     if (this.length <= idx || this.length === 0) return null;
     let midPoint = Math.floor(this.length / 2);
-
-    if (idx < midPoint) {
-      let i = 0,
-        head = this.head;
-      while (i < idx) {
-        head = head.next;
+    let i, current;
+    if (idx <= midPoint) {
+      i = 0, current = this.head;
+      while (i !== idx) {
+        current = current.next;
         i++;
       }
-      return head;
     } else {
-      let i = this.length - 1,
-        tail = this.tail;
-      while (i > midPoint) {
-        tail = tail.prev;
+      i = this.length-1, current = this.tail;
+      while (i !== idx) {
+        current = current.prev;
         i--;
       }
-      return tail;
     }
+    return current;
   }
 
   set(idx, val) {
@@ -125,20 +122,40 @@ class DoublyLinkedList {
     this.length--;
     return found;
   }
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.head.prev = null;
+    this.tail = node;
+    
+    let next, prev = null;
+    for (let i = 0; i < this.length; i++) {
+      if(i === this.length-1) {
+        node.prev = node.prev;
+        node.next = null;
+      } else {
+        next = node.next;
+        node.next = prev;
+        prev = node;
+        node = next;
+      }
+    }
+    
+    return this;
+}
 
 }
 
 const list = new DoublyLinkedList();
-list.unshift(0);
-list.push(1);
-list.push(2);
-list.push(3);
-// console.log('get->', list.get(3))
+list.push(5).push(10).push(15).push(20);
+console.log('get->', list.get(3))
 // console.log(`---------------------------------------`)
 // console.log('SET->', list.set(3, "SETHERE"))
 // console.log(`---------------------------------------`)
 // console.log('INSERT->', list.insert(0, 'INSERTED HERE'), list)
-console.log(`---------------------------------------`);
-console.log(list.remove(1));
-console.log(`---------------------------------------`);
-console.log(list);
+// console.log(`---------------------------------------`);
+// // console.log(list.remove(1));
+// // console.log(`---------------------------------------`);
+// console.log(list);
+// console.log(`---------------------------------------`);
+// console.log(list.reverse());
