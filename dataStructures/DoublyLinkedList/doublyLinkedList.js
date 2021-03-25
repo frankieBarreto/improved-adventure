@@ -54,20 +54,62 @@ class DoublyLinkedList {
         return shifted;
     }
 
-    unshift() {
-
+    unshift(val) {
+        if(!this.head) return this.push(val);
+        let node = new Node(val);
+        this.head.prev = node;
+        node.next = this.head
+        this.head = node;
+        this.length++;
+        return this;
     }
 
-    get() {
+    get(idx) {
+        if(this.length <= idx || this.length === 0) return null;
+        let midPoint = Math.floor(this.length / 2);
 
+        if(idx < midPoint) {
+            let i = 0, head = this.head;
+            while(i < idx) {
+                head = head.next;
+                i++;
+            }
+            return head;
+        } else {
+            let i = this.length-1, tail = this.tail;
+            while(i > midPoint) {
+                tail = tail.prev;
+                i--;
+            }
+            return tail;
+        }
     }
 
-    set() {
+    set(idx, val) {
+        let found = this.get(idx);
+        if(found) {
+            found.value = val;
+            return true;
+        }
 
+        return false;
     }
 
-    insert() {
-
+    insert(idx, val) {
+        if(idx < 0 || idx > this.length) return false;
+        if(idx === 0) !!this.unshift(val);
+        if(idx === this.length) !!this.push(val)
+        
+        let node = new Node(val);
+        let foundPrev = this.get(idx - 1), temp = foundPrev.next;
+        if(foundPrev) {
+            foundPrev.next = node;
+            node.next = temp;
+            this.length++;
+            return true;
+        }
+    
+        return false;
     }
 
     remove() {
@@ -76,12 +118,13 @@ class DoublyLinkedList {
 }
 
 const list = new DoublyLinkedList();
+list.unshift(0);
 list.push(1);
 list.push(2);
 list.push(3);
-
-console.log(list)
+console.log('get->', list.get(3))
 console.log(`---------------------------------------`)
-console.log(list.shift());
+console.log('SET->', list.set(3, "SETHERE"))
 console.log(`---------------------------------------`)
-console.log(list)
+console.log('INSERT->', list.insert(0, 'INSERTED HERE'), list)
+console.log(`---------------------------------------`)

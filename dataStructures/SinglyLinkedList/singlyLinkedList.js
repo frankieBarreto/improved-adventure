@@ -84,7 +84,6 @@ class LinkedList {
     
     //O(N) || O(1)
     set(index, val) {
-        let node = new Node(val);
         let found = this.get(index);
         if(found) {
             found.val = val;
