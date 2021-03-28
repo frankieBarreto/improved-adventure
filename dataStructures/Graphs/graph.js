@@ -29,15 +29,53 @@ class Graph {
 
         delete this.adjacencyList[v];
     }
+
+    dfsRecursive (start) {
+        let result = [];
+        let visited = {};
+
+        let adjacencyList = this.adjacencyList;
+        const dfs = (vertex) => {
+            if(!vertex) return null;
+            visited[vertex] = true;
+            result.push(vertex);
+
+            adjacencyList[vertex].forEach(neighbor => {
+                if(!visited[neighbor]) {
+                    return dfs(neighbor)
+                }
+            })
+        }
+
+        dfs(start)
+        return result;
+    }
 }
 
 let graph = new Graph();
-graph.addVertex("Tokyo");
-graph.addVertex("Dallas");
-graph.addVertex("Aspen");
-graph.addVertexEdge("Dallas", "Tokyo");
-graph.addVertexEdge("Dallas", "Aspen");
-console.log(graph);
-// graph.removeEdge("Dallas", "Aspen");
-graph.removeVertex("Tokyo")
+// graph.addVertex("Tokyo");
+// graph.addVertex("Dallas");
+// graph.addVertex("Aspen");
+// graph.addVertexEdge("Dallas", "Tokyo");
+// graph.addVertexEdge("Dallas", "Aspen");
+// console.log(graph);
+// // graph.removeEdge("Dallas", "Aspen");
+// graph.removeVertex("Tokyo")
+/////////////////////////// SECTION TRAVERSING VERTICES //////////////
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
+graph.addVertex('D');
+graph.addVertex('E');
+graph.addVertex('F');
+
+graph.addVertexEdge('A', 'B')
+graph.addVertexEdge('A', 'C')
+graph.addVertexEdge('B', 'D')
+graph.addVertexEdge('C', 'E')
+graph.addVertexEdge('D', 'E')
+graph.addVertexEdge('D', 'F')
+graph.addVertexEdge('E', 'F')
+graph.dfsRecursive("A");
+console.log(graph.dfsRecursive('A'));
 console.log(graph);
