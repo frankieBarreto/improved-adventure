@@ -30,7 +30,7 @@ class Graph {
         delete this.adjacencyList[v];
     }
 
-    dfsRecursive (start) {
+    dfsRecursive (startNode) {
         let result = [];
         let visited = {};
 
@@ -47,7 +47,28 @@ class Graph {
             })
         }
 
-        dfs(start)
+        dfs(startNode)
+        return result;
+    }
+
+    dfsIterative(startNode) {
+        let stack = [startNode];
+        let result = [];
+        let visited = {};
+
+        visited[startNode] = true;
+        while(stack.length) {
+            let vertex = stack.pop();
+            result.push(vertex)
+
+            this.adjacencyList[vertex].forEach(neighbor => {
+                if(!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            })
+
+        }
         return result;
     }
 }
@@ -77,5 +98,7 @@ graph.addVertexEdge('D', 'E')
 graph.addVertexEdge('D', 'F')
 graph.addVertexEdge('E', 'F')
 graph.dfsRecursive("A");
+
 console.log(graph.dfsRecursive('A'));
+console.log(graph.dfsIterative('A'));
 console.log(graph);
