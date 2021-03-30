@@ -71,6 +71,29 @@ class Graph {
         }
         return result;
     }
+
+    bfs(startNode) {
+        let queue = [startNode];
+        let result = [];
+        let visited = {};
+
+        visited[startNode] = true;
+        while(queue.length) {
+            let vertex = queue.shift();
+            result.push(vertex);
+            
+            this.adjacencyList[vertex].forEach(neighbor=>{
+                if(!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            })
+
+        }
+
+        return result;
+
+    }
 }
 
 let graph = new Graph();
@@ -99,6 +122,8 @@ graph.addVertexEdge('D', 'F')
 graph.addVertexEdge('E', 'F')
 graph.dfsRecursive("A");
 
-console.log(graph.dfsRecursive('A'));
-console.log(graph.dfsIterative('A'));
+// console.log(graph.dfsRecursive('A'));
+// console.log(graph.dfsIterative('A'));
+console.log(graph.bfs('A'))
+
 console.log(graph);
