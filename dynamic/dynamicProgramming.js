@@ -16,3 +16,18 @@ const fibBigO = (n, memo = []) => {
     memo[n] = res;
     return res;
 }
+
+//Bottom-Up fib_table
+
+const fibTable = (n) => {
+    if(n <= 2) return 1;
+    let fibs = [0,1,1];
+    for (let i = 3; i <= n; i++) {
+        fibs[i] = fibs[i-1] + fibs[i - 2];
+    }
+
+    return fibs[n]
+}
+
+
+console.log(fibTable(100))
