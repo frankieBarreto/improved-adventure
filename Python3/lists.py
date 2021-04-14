@@ -1,4 +1,7 @@
 # Define my_stuff
+from typing import ValuesView
+
+
 my_stuff = [1, 2, 3, 4, "Camera", 2.5]
 # Define nums
 nums = list(range(1,100))
@@ -87,3 +90,51 @@ print(colors[0::2]) # returns an array from index 0 til the end but stepping ove
 print(colors[::-1])
 print(colors[2::-1])
 print(colors[:1:-1])
+
+# You can do the same with strings
+
+
+
+# Swapping Values
+colors[0], colors[-1] = colors[-1], colors[0]
+print(colors)
+
+# LIST COMPREHENSION
+nums = [1,2,3,4,5,6,7,8,9,10]
+multiply_by_ten = [n * 10 for n in nums]
+print(nums, multiply_by_ten)
+
+
+name = 'Frankie'
+cap_char_list = [c.upper() for c in name]
+print(cap_char_list)
+
+
+str_nums = [str(n) for n in nums]
+print(str_nums)
+
+
+
+# conditional list comprehenion
+
+odds = [n for n in nums if n % 2 == 1]
+
+evens = [n for n in nums if n % 2 == 0]
+
+print(odds, evens)
+
+
+even_prod_odd_half = [n*2 if n % 2 == 0 else n/2 for n in nums]
+print(even_prod_odd_half)
+
+
+str = " !!! "
+str = str.join(['strange', 'python', 'power'])
+print(str)
+
+
+with_vowels = "This is so much fun!"
+with_vowels = "".join(char for char in with_vowels if char not in "aeiou")
+
+
+print(with_vowels)
