@@ -138,3 +138,46 @@ with_vowels = "".join(char for char in with_vowels if char not in "aeiou")
 
 
 print(with_vowels)
+
+
+
+# LIST COMPREHENSION EXERCISES SECTION
+
+
+names = ["Elie", "Tim", "Matt"]
+first_letters = [char[0] for char in names] 
+print(first_letters)
+
+numbers = [1,2,3,4,5,6]
+
+evens = [n for n in numbers if n % 2 == 0]
+print(evens)
+
+
+
+# return numbers that are in both lists
+num1 = [1,2,3,4]
+num2 = [3,4,5,6]
+
+result = [n for n in num1 if n in num2]
+print(result)
+
+# return words reversed and lowercased
+names = ["Elie", "Tim", "Matt"]
+words = [name[::-1].lower() for name in names]
+print(words)
+
+
+# return all numbers divisible by 12 between 1 - 100 in a list 
+
+div_by_12 = [n for n in range(1, 101) if n % 12 == 0]
+print(div_by_12)
+
+
+
+# return all letters that aren't vowels in a list.
+word = "amazing"
+vowels = "aeiou"
+no_vowel = [char for char in word if char not in vowels]
+
+print(no_vowel)
