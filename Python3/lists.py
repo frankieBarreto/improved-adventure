@@ -181,3 +181,12 @@ vowels = "aeiou"
 no_vowel = [char for char in word if char not in vowels]
 
 print(no_vowel)
+
+
+
+
+
+# nested list comprehention
+
+nums = [[num for num in range(3)] for list in range(3)]
+print(nums) #[[0, 1, 2], [0, 1, 2], [0, 1, 2]]
