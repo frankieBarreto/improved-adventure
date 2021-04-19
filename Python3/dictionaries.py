@@ -110,7 +110,7 @@ d = dict(a=1, b=2, c=3, d=4, e=5, f=6)
 person = dict(name='frankie', food='pizza', age=32)
 
 person.update(char_info)
-# print(person)
+
 
 
 
@@ -128,4 +128,72 @@ stock_list['cookie'] = 18
 
 # remove 'cake' from stock_list USE A DICTIONARY METHOD
 stock_list.pop('cake')
-print(stock_list)
+# print(stock_list)
+
+
+
+
+
+
+# Dictionary comprehention SECTION //////////////////////////////////////////////////////////////////
+
+numbers = dict(first=1, second=2, third=3, forth=4)
+
+squared_numbers = {key: val ** 2 for key, val in numbers.items()}
+# print(squared_numbers)
+
+
+
+
+num_list = [1,2,3,4]
+nums_cubed = {num: num ** 3 for num in num_list}
+# print(nums_cubed)
+
+
+str = "ABC"
+str_num = "123"
+
+letter_nums = {str[i]:str_num[i] for i in range(len(str))}
+# print(letter_nums)
+
+
+
+# CONDITIONAL DICTIONARY COMPREHENTION
+human = dict(planet='Earth', galaxy='Milkyway', sun='Sol', sex='male', name='John Doe')
+loud_human = {k.upper():v.upper() for k,v in human.items()}
+# print(loud_human)
+
+
+numeros = [1,2,3,4,5,6,7,8,9,10]
+# odds_evens = {num:("even" if num % 2 == 0 else "odd") for num in numeros}
+# odds_evens = {num:("even" if num % 2 == 0 else "odd") for num in range(101)}
+# print(odds_evens)
+
+list1 = ["CA", "NJ", "RI"]
+list2 = ["California", "New Jersey", "Rhode Island"]
+
+# make sure your solution is assigned to the answer variable so the tests can work!
+answer = {list1[i]:list2[i] for i in range(len(list1))}
+# print(answer)
+
+person = [["name", "Jared"], ["job", "Musician"], ["city", "Bern"]]
+
+# use the person variable in your answer
+answer2 = {el[0]:el[1] for el in person}
+# print(answer2)
+answer3 = {k:v for k,v in person}
+# print(answer3)
+
+
+vowels = 'aeiuo'
+# answer4 = {}.fromkeys(vowels, 0)
+answer4 = {char:0 for char in vowels}
+# print(answer4)
+
+
+
+# return a dict with all letters chars using their ASCII codes
+upper_alph = {n: chr(n) for n in range(65, 91)}
+alph = {n: chr(n) for n in range(97, 123)}
+alph.update(upper_alph)
+print(alph)
