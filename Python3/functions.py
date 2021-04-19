@@ -95,7 +95,7 @@ def list_manipulation(items, command, location, value=None):
         items.insert(0, value)
         return items
 
-print(list_manipulation(arr, 'add', 'beginning', 'a'))
+# print(list_manipulation(arr, 'add', 'beginning', 'a'))
 
 
 
@@ -104,7 +104,7 @@ def is_palindrome(str):
     str = str.replace(" ", "")
     return str[::-1] == str
 
-print(is_palindrome("tac ocat"))
+# print(is_palindrome("tac ocat"))
 
 
 
@@ -134,3 +134,49 @@ def intersection(list1, list2):
 
 def partition(list, cb):
     return [[el for el in list if cb(el)], [el for el in list if not cb(el)]]
+
+
+
+
+def contains_purple(*args):
+    if 'purple' in args: return True
+    return False
+
+print(contains_purple('blue'))
+
+
+
+def combine_words(word,**kwargs):
+    if 'prefix' in kwargs:
+        return kwargs['prefix'] + word
+    elif 'suffix' in kwargs:
+        return word + kwargs['suffix']
+    return word
+
+
+
+# def sum_all_values(*args):
+#     total = 0
+#     for num in args:
+#         total += num
+#     return total
+
+# print("sum: ", sum_all_values(1,2,3,4,5,6,7))
+
+# works only if the numbers are individual numbers
+
+# args is a tuple of data. we need to unpack it
+def sum_all_values(*args):
+    total = 0
+    for num in args:
+        total += num
+    return total
+
+# you can unpack it by using a * with the argument
+print("sum: ", sum_all_values(*[1,2,3,4,5,6,7]))
+
+
+
+
+
+
