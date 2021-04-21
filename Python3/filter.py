@@ -33,3 +33,21 @@ def is_all_strings(l):
     return all([type(el) == str for el in l])
 
 print(is_all_strings(l2))
+
+def triple_and_filter(li):
+    # return [el*3 for el in li if el % 4 == 0]
+    return list(filter(lambda n: n % 4 == 0, li), map(lambda n: n*3))
+
+
+
+'''
+names = [{'first': 'Elie', 'last': 'Schoppik'}, {'first': 'Colt', 'last': 'Steele'}]
+extract_full_name(names) # ['Elie Schoppik', 'Colt Steele']
+'''
+names = [{'first': 'Elie', 'last': 'Schoppik'}, {'first': 'Colt', 'last': 'Steele'}]
+def extract_full_name(data):
+	# return [d['first']+ " " + d['last'] for d in data]
+	 return list(map(lambda val: "{} {}".format(val['first'], val['last']), data))
+
+print(extract_full_name(names)) # ['Elie Schoppik', 'Colt Steele']
+

@@ -31,4 +31,9 @@ def extremes(data):
 print(extremes(string))
 
 
+def max_magnitude(li):
+    # return max([abs(el) for el in li])
+	return max(abs(el) for el in li)
+
+
 
