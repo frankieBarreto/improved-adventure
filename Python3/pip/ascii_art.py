@@ -1,5 +1,5 @@
 from re import S
-import pyfigletgit
+import pyfiglet
 from termcolor import colored
 
 msg = input("What would you like to print? ")
