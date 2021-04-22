@@ -1,4 +1,3 @@
-# A User class with both instance attributes and instance methods
 class User:
 	active_users = 0
 
@@ -16,6 +15,11 @@ class User:
 		self.last = last
 		self.age = age
 		User.active_users += 1
+	# NEW CODE
+	def __repr__(self):
+		return f"{self.first} is {self.age}"
+	# NEW CODE
+
 
 	def logout(self):
 		User.active_users -= 1
@@ -38,18 +42,13 @@ class User:
 		return f"Happy {self.age}th, {self.first}"
 
 
+tom = User.from_string("Tom,Jones,89")
 
-user1 = User("Joe", "Smith", 68)
-user2 = User("Blanca", "Lopez", 41)
-print(User.display_active_users())
-user1 = User("Joe", "Smith", 68)
-user2 = User("Blanca", "Lopez", 41)
-print(User.display_active_users())
+j = User("judy", "steele", 18)
+j = str(j)
+print(j)
 
-# tom = User.from_string("Tom,Jones,89")
-# print(tom.first)
-# print(tom.full_name())
-# print(tom.birthday())
+
 
 
 
