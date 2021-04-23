@@ -34,3 +34,15 @@ k = Human("Kevin", "Jones", 49)
 # kevin and jessica have triplets!
 triplets = (k + j) * 3
 print(triplets)
+
+
+
+class Train:
+	def __init__(self, num_cars):
+		self.num_cars = num_cars
+
+	def __repr__(self) -> str:
+		return "{} car train".format(self.num_cars)
+	
+	def __len__(self):
+		return self.num_cars

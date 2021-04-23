@@ -52,14 +52,17 @@ class Deck:
         values = ["A", "2", "3" ,"4" ,"5","6","7","8","9","10", "J", "Q", "K"]
         self.cards = [Card(s, v) for s in suits for v in values]
 
-    def count(self):
-        return len(self.cards)
+# NOTE made deck iterable
+    def __iter__(self):
+        return iter(self.cards)
 
 
     def __repr__(self):
         print(self.cards)
         return "Deck of {} cards".format(self.count())
     
+    def count(self):
+        return len(self.cards)
 
     def _deal(self, num):
         count = self.count()
