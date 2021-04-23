@@ -18,3 +18,4 @@ class Counter:
 
 for x in Counter(50,70):
 	print(x)
+	Infinity
