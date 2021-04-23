@@ -15,7 +15,7 @@ class Animal:
 # Cat class inherits from Animal
 class Cat(Animal):
 	def __init__(self, name, species, breed, toy):
-		super().__init__(self, name, species)
+		super().__init__(name, species)
 		self.breed = breed
 		self.toy = toy
 
