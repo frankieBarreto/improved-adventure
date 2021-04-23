@@ -87,12 +87,12 @@ class Deck:
         cards = self._deal(hand_size)
         return cards
 
-d = Deck()
-d.shuffle()
-print("Deck: ", d)
-print("deal_hand: ", d.deal_hand(5)) # n cards dealt
-print("deal_card: ", d.deal_card()) # 1 card dealt
-print(d)
+# d = Deck()
+# d.shuffle()
+# print("Deck: ", d)
+# print("deal_hand: ", d.deal_hand(5)) # n cards dealt
+# print("deal_card: ", d.deal_card()) # 1 card dealt
+# print(d)
 
 
 
