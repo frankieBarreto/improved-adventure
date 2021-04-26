@@ -1,12 +1,6 @@
 
 from random import shuffle
-class Card:
-    def __init__(self, suit, value):
-        self.suit = suit
-        self.value = value
-
-    def __repr__(self):
-        return "{} of {}".format(self.value, self.suit)
+from card import Card
 
 
 class Deck:    
