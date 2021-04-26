@@ -1,12 +1,13 @@
 file = open("story.txt") # opens file
 print(file)
 
-story = file.read()  # prints the file
+story = file.read()  # reads the file into memory as a string
+story = file.readlines()  # reads the fil into memory as a list of strings
 print(story)
 
 
 
-seek = file.seek(1) # seeks lines
+seek = file.seek(1) # seeks lines moves cursor anywhere in an open file
 print(seek)
 
 
