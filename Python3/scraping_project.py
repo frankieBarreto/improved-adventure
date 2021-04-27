@@ -1,6 +1,7 @@
 # http://quotes.toscrape.com
 import  requests
 from bs4 import BeautifulSoup
+from time import sleep
 # class="quote"
 # class="author"
 # <a href="">
@@ -11,6 +12,7 @@ all_quotes = []
 
 while page:
     res = requests.get(f"{url}{page}")
+    print(f"Scraping {url}{page} Now...")
     soup = BeautifulSoup(res.text, "html.parser")
     quotes = soup.find_all(class_="quote")
 
@@ -25,6 +27,6 @@ while page:
         })
         next_button = soup.find(class_='next')
         page = next_button.find("a")['href'] if next_button else None
-
+        # sleep(2)
 
 print(all_quotes)
