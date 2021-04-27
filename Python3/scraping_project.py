@@ -3,6 +3,9 @@ import requests
 from bs4 import BeautifulSoup
 from random import choice
 from time import sleep
+from csv import DictWriter
+
+from requests.sessions import default_headers
 # class="quote"
 # class="author"
 # <a href="">
@@ -28,14 +31,11 @@ def scrape_quotes(url):
             })
             next_button = soup.find(class_='next')
             page = next_button.find("a")['href'] if next_button else None
-            # sleep(2)
+            sleep(2)
     return all_quotes
 
 
 
-
-
-all_quotes = scrape_quotes(url, page)
 def start_game():
     quote = choice(all_quotes)
     author = quote['author']
@@ -72,4 +72,15 @@ def start_game():
             print("Goodbye!")
             break
 
-start_game()
+# start_game()
+
+def write_quotes():
+    with open("quotes.cvs", "w") as file:
+        headers = ['text', 'author', 'link']
+        csv_writer = DictWriter(file, fieldnames=headers)
+        csv_writer.writeheader()
+        for quote in all_quotes:
+            csv_writer.writerow(quote)
+
+all_quotes = scrape_quotes(url)
+write_quotes(all_quotes)
