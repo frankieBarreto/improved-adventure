@@ -8,8 +8,8 @@ from time import sleep
 # <a href="">
 
 url = "http://quotes.toscrape.com"
-page = "/page/1"
-def scrape_quotes(url, page):
+def scrape_quotes(url):
+    page = "/page/1"
     all_quotes = []
     while page:
         res = requests.get(f"{url}{page}")
